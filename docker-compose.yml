@@ -1,0 +1,23 @@
+services:
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: flow_db
+    volumes:
+      - ./data/db:/var/lib/mysql
+
+  api:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=flow_db
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_HOST=db
