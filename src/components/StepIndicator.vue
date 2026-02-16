@@ -1,29 +1,54 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
-const currentStep = ref(1);
-const totalSteps = 4; // change according to your steps
+// We use "props" so the parent (FormLayout) can tell this component which step is active
+const props = defineProps({
+  currentStep: {
+    type: Number,
+    default: 1
+  }
+});
 
-// calculate progress percentage
-const progressValue = computed(() => (currentStep.value / totalSteps) * 100);
+const steps = [
+  { id: 1, name: 'Personal Info' },
+  { id: 2, name: 'Contact Info' },
+  { id: 3, name: 'Employment' }
+];
+
+const totalSteps = steps.length;
+const progressWidth = computed(() => ((props.currentStep - 1) / (totalSteps - 1)) * 100);
 </script>
 
 <template>
-  <div class="mb-6">
-    <!-- Progress Bar -->
-    <div class="relative w-full h-2 bg-blue-100 rounded-full overflow-hidden">
-      <div
-        class="bg-blue-600 h-full transition-all"
-        :style="{ transform: `translateX(-${100 - progressValue}% )` }"
+  <div class="w-full max-w-4xl mx-auto mb-10 px-4">
+    <div class="relative flex justify-between mb-4">
+      
+      <div class="absolute top-1/2 left-0 w-full h-1 bg-blue-100 -translate-y-1/2 z-0 rounded-full"></div>
+      
+      <div 
+        class="absolute top-1/2 left-0 h-1 bg-blue-600 -translate-y-1/2 z-0 transition-all duration-500 rounded-full"
+        :style="{ width: progressWidth + '%' }"
       ></div>
-    </div>
 
-    <!-- Step Labels -->
-    <div class="flex justify-between text-sm mt-2 text-blue-600 font-medium">
-      <span>Step 1</span>
-      <span>Step 2</span>
-      <span>Step 3</span>
-      <span>Step 4</span>
+      <div v-for="step in steps" :key="step.id" class="relative z-10 flex flex-col items-center">
+        <div 
+          class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border-4 transition-all duration-300 font-bold"
+          :class="[
+            step.id <= props.currentStep 
+              ? 'bg-blue-600 border-white text-white shadow-md' 
+              : 'bg-blue-100 border-blue-50 text-blue-400'
+          ]"
+        >
+          {{ step.id }}
+        </div>
+        
+        <div 
+          class="absolute top-14 whitespace-nowrap text-xs md:text-sm font-medium transition-colors duration-300"
+          :class="step.id <= props.currentStep ? 'text-blue-900' : 'text-blue-400'"
+        >
+          {{ step.name }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
