@@ -1,23 +1,18 @@
 <script setup>
 import { ref } from 'vue'
 import PersonalInfoForm from '../components/PersonalInfoForm.vue'
+import ContactInfoForm from '../components/ContactInfoForm.vue'
 import StepIndicator from '../components/StepIndicator.vue'
 
-// 1. Create the 'state' to track which step we are on
 const currentStep = ref(1)
-const totalSteps = 4
+const totalSteps = 3 // Changed to 3
 
-// 2. Functions to change the steps
 const nextStep = () => {
-  if (currentStep.value < totalSteps) {
-    currentStep.value++
-  }
+  if (currentStep.value < totalSteps) currentStep.value++
 }
 
 const prevStep = () => {
-  if (currentStep.value > 1) {
-    currentStep.value--
-  }
+  if (currentStep.value > 1) currentStep.value--
 }
 </script>
 
@@ -39,9 +34,11 @@ const prevStep = () => {
       <div class="mt-8 bg-white p-8 rounded-2xl shadow-xl border border-blue-50">
         <PersonalInfoForm v-if="currentStep === 1" />
         
-        <div v-else class="py-20 text-center">
-          <h2 class="text-2xl text-blue-900 font-bold">Step {{ currentStep }} Content</h2>
-          <p class="text-gray-500 mt-2">Coming soon: Uploads & Contact Info</p>
+        <ContactInfoForm v-else-if="currentStep === 2" />
+
+        <div v-else-if="currentStep === 3" class="py-20 text-center">
+          <h2 class="text-2xl text-blue-900 font-bold">Step 3: Final Review</h2>
+          <p class="text-gray-500 mt-2">Ready to submit your information.</p>
         </div>
       </div>
 
