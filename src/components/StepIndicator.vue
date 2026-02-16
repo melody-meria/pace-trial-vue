@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 
-// We use "props" so the parent (FormLayout) can tell this component which step is active
+
 const props = defineProps({
   currentStep: {
     type: Number,
