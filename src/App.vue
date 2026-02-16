@@ -1,7 +1,7 @@
 <script setup>
-import PersonalInfoForm from './components/PersonalInfoForm.vue'
+import FormLayout from './layouts/FormLayout.vue' // import your layout
 </script>
 
 <template>
-  <PersonalInfoForm />
+  <FormLayout />
 </template>
