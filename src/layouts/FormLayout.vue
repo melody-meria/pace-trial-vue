@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import PersonalInfoForm from '../components/PersonalInfoForm.vue'
 import ContactInfoForm from '../components/ContactInfoForm.vue'
-import EmploymentForm from '../components/EmploymentForm.vue'
+import IdentificationForm from '../components/IdentificationForm.vue'
 import StepIndicator from '../components/StepIndicator.vue'
 
 const currentStep = ref(1)
@@ -39,7 +39,7 @@ const prevStep = () => {
         
         <ContactInfoForm v-else-if="currentStep === 2" />
 
-        <EmploymentForm v-else-if="currentStep === 3" />
+        <IdentificationForm v-else-if="currentStep === 3" />
       </div>
 
       <div class="mt-8 flex items-center justify-between px-2">

@@ -12,7 +12,7 @@ const props = defineProps({
 const steps = [
   { id: 1, name: 'Personal Info' },
   { id: 2, name: 'Contact Info' },
-  { id: 3, name: 'Employment' }
+  { id: 3, name: 'ID Documents' }
 ];
 
 const totalSteps = steps.length;
