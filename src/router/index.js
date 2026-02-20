@@ -1,17 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import PortalSwitch from '../views/PortalSwitch.vue'  
 import FormLayout from '../layouts/FormLayout.vue'
 import KioskSelection from '../views/KioskSelection.vue'
+import StaffReviewScreen from '../views/StaffView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: FormLayout  // initial page: the multi-step form
+    name: 'PortalSwitch',
+    component: PortalSwitch
+  },
+  {
+    path: '/user',
+    name: 'UserForm',
+    component: FormLayout
   },
   {
     path: '/kiosk-selection',
-    name: 'kiosk-selection',
-    component: KioskSelection  // after form submit
+    name: 'KioskSelection',
+    component: KioskSelection
+  },
+  {
+    path: '/staff-review',
+    name: 'StaffView',
+    component: StaffReviewScreen
   }
 ]
 

@@ -35,6 +35,9 @@ const idData = reactive({
           <option value="tin">TIN ID</option>
           <option value="postal">Postal ID</option>
           <option value="voters">Voter's ID</option>
+          <option value="other">Barangay Clearance</option>
+          <option value="voters">Police Clearance</option>
+
         </select>
       </div>
 
