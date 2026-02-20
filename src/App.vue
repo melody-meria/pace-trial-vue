@@ -1,7 +1,6 @@
-<script setup>
-import FormLayout from './layouts/FormLayout.vue' 
-</script>
-
 <template>
-  <FormLayout />
+  <router-view />
 </template>
+
+<script setup>
+</script>

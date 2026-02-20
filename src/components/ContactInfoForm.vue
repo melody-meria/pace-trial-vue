@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 
 const contactData = reactive({
   contactNumber: '',
+  backupContactNumber: '',
   email: '',
   address: ''
 });
@@ -17,7 +18,7 @@ const contactData = reactive({
     <div class="grid grid-cols-1 gap-6">
       <div>
         <label for="contactNumber" class="block text-blue-900 mb-2 font-medium">
-          Contact Number <span class="text-red-500">*</span>
+          Primary Contact Number <span class="text-red-500">*</span>
         </label>
         <input
           v-model="contactData.contactNumber"
@@ -27,6 +28,20 @@ const contactData = reactive({
           class="w-full px-4 py-3 bg-blue-50 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
         />
         <p class="text-blue-600 text-sm mt-1 font-medium">Include country code for mobile numbers</p>
+      </div>
+
+      <div>
+        <label for="backupContactNumber" class="block text-blue-900 mb-2 font-medium">
+          Backup Contact Number <span class="text-red-500">*</span>
+        </label>
+        <input
+          v-model="contactData.backupContactNumber"
+          type="tel"
+          id="backupContactNumber"
+          placeholder="e.g., +63 913 456 7890"
+          class="w-full px-4 py-3 bg-blue-50 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
+        />
+        <p class="text-blue-600 text-sm mt-1 font-medium">Alternative number we can use to reach you</p>
       </div>
 
       <div>

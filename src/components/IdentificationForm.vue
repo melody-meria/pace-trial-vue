@@ -109,6 +109,7 @@ const idData = reactive({
         <h3 class="text-green-900 font-bold">Almost Done!</h3>
       </div>
       <p class="text-green-800 text-sm">This is the last section. Click "Submit" when you're ready!</p>
+
     </div>
   </div>
 </template>
